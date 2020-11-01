@@ -30,14 +30,6 @@ public class AstroSpawn : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.R))
-          //  SpawnAsteroid();
-    }
-
-
     IEnumerator countdown()
     {
         SpawnAsteroid();
