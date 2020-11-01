@@ -10,6 +10,8 @@ public class SpaceShip : MonoBehaviour
     private float collisionCD = Mathf.FloorToInt(3 % 60);
     bool cdActive = false;
     bool astroCollision = false;
+    [HideInInspector]
+    public bool earthInRange = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,10 @@ public class SpaceShip : MonoBehaviour
         {
             astroCollision = true;
         }
+        if(other.gameObject.name == "Earth")
+        {
+            earthInRange = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -49,6 +55,10 @@ public class SpaceShip : MonoBehaviour
         if (other.CompareTag("Asteroid"))
         {
             astroCollision = false;
+        }
+        if (other.gameObject.name == "Earth")
+        {
+            earthInRange = false;
         }
     }
 

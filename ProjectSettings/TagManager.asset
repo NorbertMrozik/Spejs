@@ -7,6 +7,7 @@ TagManager:
   - Asteroid
   - GameArea
   - Border
+  - Planet
   layers:
   - Default
   - TransparentFX

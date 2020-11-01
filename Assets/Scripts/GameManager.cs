@@ -7,13 +7,14 @@ public class GameManager : MonoBehaviour
 {
     [HideInInspector]
     public int score = 0;
-    [HideInInspector]
-    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI[] scoreText;
+
 
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = score.ToString();
+        for (int i = 0; i < scoreText.Length; i++)
+            scoreText[i].text = score.ToString();
     }
 
 }
