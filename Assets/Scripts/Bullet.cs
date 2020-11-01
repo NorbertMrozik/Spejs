@@ -23,10 +23,14 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Asteroid asteroid = hitInfo.GetComponent<Asteroid>();
-        if (asteroid != null)
-            asteroid.TakeDamage(damage);
-        Destroy(this.gameObject);
+        if (hitInfo.CompareTag("Asteroid"))
+        {
+            Asteroid asteroid = hitInfo.GetComponent<Asteroid>();
+            if (asteroid != null)
+                asteroid.TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
+
     }
 
 }

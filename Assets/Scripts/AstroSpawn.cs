@@ -7,6 +7,8 @@ public class AstroSpawn : MonoBehaviour
 
     public Vector3 size;
     public Vector3 center;
+    [Space]
+    public int amountOfAstro;
 
 
     [HideInInspector]
@@ -22,7 +24,7 @@ public class AstroSpawn : MonoBehaviour
         center = this.gameObject.transform.position;
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         spawnBounds = size;
-        for (int i=0; i<=5; i++)
+        for (int i=0; i<=amountOfAstro; i++)
         {
             StartCoroutine(countdown());
         }
