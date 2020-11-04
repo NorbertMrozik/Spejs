@@ -21,7 +21,7 @@ public class SectorCheck : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("GameArea"))
+        if (other.CompareTag("GameArea") || other.CompareTag("Planet"))
         {
             sectorText.text = other.gameObject.name;
         }

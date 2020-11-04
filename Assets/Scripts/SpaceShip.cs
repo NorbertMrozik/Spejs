@@ -44,7 +44,7 @@ public class SpaceShip : MonoBehaviour
         {
             astroCollision = true;
         }
-        if(other.gameObject.name == "Earth")
+        if(other.CompareTag("Planet"))
         {
             earthInRange = true;
         }
