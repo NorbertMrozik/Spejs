@@ -11,21 +11,25 @@ public class Earth : MonoBehaviour
     public GameObject shopPanel;
     public GameObject questsPanel;
     bool panelOpen = false;
+    [HideInInspector]
+    public bool playerInRange = false;
 
     private void Start()
     {
         spaceShip = GameObject.FindGameObjectWithTag("Player").GetComponent<SpaceShip>();
     }
 
+    
+
     private void Update()
     {
-        if (spaceShip.earthInRange == true && Input.GetKeyDown(KeyCode.E) && panelOpen == false)
+        if (playerInRange && Input.GetKeyDown(KeyCode.E) && panelOpen == false)
         {
             planetPanel.SetActive(true);
             panelOpen = true;
             Time.timeScale = 0f;
         }
-        if (spaceShip.earthInRange == true && Input.GetKeyDown(KeyCode.Escape) && panelOpen == true)
+        else if (playerInRange && Input.GetKeyDown(KeyCode.Escape) && panelOpen == true)
         {
             panelOpen = false;
             planetPanel.SetActive(false);

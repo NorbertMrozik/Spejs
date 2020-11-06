@@ -8,6 +8,7 @@ TagManager:
   - GameArea
   - Border
   - Planet
+  - MoneyAmount
   layers:
   - Default
   - TransparentFX
