@@ -6,7 +6,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public int score = 0;
-    public TextMeshProUGUI[] scoreText;
+    public TextMeshProUGUI scoreText;
 
     public GameObject map;
     bool mapOpen = false;
@@ -15,8 +15,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < scoreText.Length; i++)
-            scoreText[i].text = score.ToString() + " "+ "Sp";
+            scoreText.text = score.ToString() + " "+ "Sp";
 
         if (Input.GetKeyDown(KeyCode.M) && mapOpen == false)
         {

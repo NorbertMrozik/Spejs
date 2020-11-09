@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
 
     public float forwardSpeed;
     public float boostSpeed;
+    public TextMeshProUGUI canistersAmount;
+    public float maximumFuelCanisters;
+    public float fuelCanisters = 1;
     public float fuelAmount;
     private float initialSpeed;
     bool fueldrain = false;
@@ -24,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         initialSpeed = forwardSpeed;
+        maximumFuelCanisters = fuelCanisters;
     }
 
 
@@ -47,13 +52,20 @@ public class PlayerMovement : MonoBehaviour
         ThrustForward(yAxis);
         Rotate(transform, -xAxis * rotationSpeed);
 
-        if (boost > 0 && fuelAmount > 0)
+        if (boost > 0 && fuelCanisters > 0)
         {
             var boostEm = thrustEffect.colorOverLifetime;
             boostEm.enabled = true;
             forwardSpeed = boostSpeed;
             fuelAmount -= 0.1f;
             fueldrain = true;
+            if (fuelAmount <= 0 && fuelCanisters > 0)
+            {
+                fuelCanisters--;
+                fuelAmount = 100;
+                if (fuelCanisters == 0)
+                    fuelAmount = 0;
+            }
         }
         else
         {
@@ -64,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (fuelAmount < 100)
             RefillFuel();
+        canistersAmount.text = "x" + fuelCanisters.ToString();
     }
 
 
@@ -72,8 +85,15 @@ public class PlayerMovement : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= fuelRefill && fueldrain == false)
         {
-            fuelAmount += 1f;
+            fuelAmount += 3f;
             timer = 0;
+            if (fuelCanisters == 0)
+                fuelCanisters++;
+            if (fuelCanisters < maximumFuelCanisters && fuelAmount >= 100)
+            {
+                fuelCanisters++;
+                fuelAmount = 0;
+            }    
         }
     }
 
