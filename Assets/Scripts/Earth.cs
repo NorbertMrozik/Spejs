@@ -12,7 +12,7 @@ public class Earth : MonoBehaviour
     public GameObject questsPanel;
 
     [Space]
-    public GameObject minimap;
+    public GameObject minimapBorder;
     public GameObject sectorText;
     bool panelOpen = false;
     [HideInInspector]
@@ -30,7 +30,7 @@ public class Earth : MonoBehaviour
         if (playerInRange && Input.GetKeyDown(KeyCode.E) && panelOpen == false)
         {
             planetPanel.SetActive(true);
-            minimap.SetActive(false);
+            minimapBorder.SetActive(false);
             sectorText.SetActive(false);
             panelOpen = true;
             Time.timeScale = 0f;
@@ -41,7 +41,7 @@ public class Earth : MonoBehaviour
             planetPanel.SetActive(false);
             shopPanel.SetActive(false);
             questsPanel.SetActive(false);
-            minimap.SetActive(true);
+            minimapBorder.SetActive(true);
             sectorText.SetActive(true);
             Time.timeScale = 1f;
         }
@@ -50,7 +50,7 @@ public class Earth : MonoBehaviour
     public void GoBack()
     {
         planetPanel.SetActive(false);
-        minimap.SetActive(true);
+        minimapBorder.SetActive(true);
         sectorText.SetActive(true);
         panelOpen = false;
         Time.timeScale = 1f;
